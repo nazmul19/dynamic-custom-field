@@ -1,0 +1,122 @@
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd 
+   http://www.liquibase.org/xml/ns/dbchangelog 
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+     
+  <changeSet author="nhassan" id="1">
+    <createTable tableName="ACCOUNTS">
+      <column name="IDENTIFIER" type="BIGINT" autoIncrement="true">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="NAME" type="VARCHAR(64)">
+        <constraints nullable="false"/>
+      </column>
+	  <column name="COUNTRY" type="VARCHAR(32)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="VERSION" type="VARCHAR(32)"></column>
+      <column name="CREATED_AT" type="TIMESTAMP"></column>
+      <column name="CREATED_BY" type="VARCHAR(255)"></column>
+      <column name="UPDATED_AT" type="TIMESTAMP"></column>
+      <column name="UPDATED_BY" type="VARCHAR(255)"></column>
+     </createTable>
+  </changeSet>
+  
+  <changeSet author="nhassan" id="2">
+    <createTable tableName="CONTACTS">
+      <column name="IDENTIFIER" type="BIGINT" autoIncrement="true">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="FIRST_NAME" type="VARCHAR(64)">
+      </column>
+      <column name="LAST_NAME" type="VARCHAR(64)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="ACCOUNT_ID" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="VERSION" type="VARCHAR(32)"></column>
+      <column name="CREATED_AT" type="TIMESTAMP"></column>
+      <column name="CREATED_BY" type="VARCHAR(255)"></column>
+      <column name="UPDATED_AT" type="TIMESTAMP"></column>
+      <column name="UPDATED_BY" type="VARCHAR(255)"></column>
+    </createTable>
+  </changeSet>
+  
+  <changeSet author="nhassan" id="3">
+    <createTable tableName="USERS">
+      <column name="IDENTIFIER" type="BIGINT" autoIncrement="true">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="USER_NAME" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="PASSWORD" type="VARCHAR(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="VERSION" type="VARCHAR(32)"></column>
+      <column name="CREATED_AT" type="TIMESTAMP"></column>
+      <column name="CREATED_BY" type="VARCHAR(255)"></column>
+      <column name="UPDATED_AT" type="TIMESTAMP"></column>
+      <column name="UPDATED_BY" type="VARCHAR(255)"></column>
+    </createTable>
+  </changeSet>
+  
+  <changeSet author="nhassan" id="4">
+    <createTable tableName="APP_FORM_CONTEXT">
+      <column name="IDENTIFIER" type="BIGINT" autoIncrement="true">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="CONTAINER_ID" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="ENTITY_TYPE" type="VARCHAR(64)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="CP_ID" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="ENTITY_ID" type="BIGINT">
+      </column>
+      <column name="SORT_ORDER" type="INT">
+      </column>
+      <column name="IS_MULTIRECORD" type="TINYINT">
+      </column>
+      <column name="IS_SYSFORM" type="TINYINT">
+      </column>
+      <column name="DELETED_ON" type="TIMESTAMP">
+      </column>
+    </createTable>
+  </changeSet>
+  
+  <changeSet author="nhassan" id="5">
+       <createTable tableName="FORM_RECORD_ENTRY">
+           <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+               <constraints nullable="false" primaryKey="true"/>
+           </column>
+           <column name="FORM_CTXT_ID" type="BIGINT">
+               <constraints nullable="false"/>
+           </column>
+           <column name="OBJECT_ID" type="BIGINT">
+               <constraints nullable="false"/>
+           </column>
+           <column name="RECORD_ID" type="BIGINT">
+               <constraints nullable="false"/>
+           </column>
+           <column name="UPDATED_BY" type="BIGINT">
+               <constraints nullable="false"/>
+           </column>
+           <column defaultValueComputed="CURRENT_TIMESTAMP" name="UPDATE_TIME" type="TIMESTAMP">
+               <constraints nullable="false"/>
+           </column>
+           <column name="ACTIVITY_STATUS" type="VARCHAR(16)">
+               <constraints nullable="false"/>
+           </column>
+       </createTable>
+   </changeSet>
+     
+</databaseChangeLog>

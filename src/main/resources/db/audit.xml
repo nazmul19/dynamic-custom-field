@@ -1,0 +1,63 @@
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd 
+   http://www.liquibase.org/xml/ns/dbchangelog 
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+ 
+  <changeSet author="nhassan" id="audit_1">
+    <createTable tableName="REVINFO">
+      <column autoIncrement="true" name="rev" type="INT(10)">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="revtstmp" type="BIGINT(19)"/>
+      <column name="user_id" type="BIGINT(20)"/>
+    </createTable>
+  </changeSet>
+  
+  <changeSet author="nhassan" id="audit_2">
+     <createTable tableName="USERS_AUD">
+         <column name="IDENTIFIER" type="BIGINT(20)">
+             <constraints nullable="false"/>
+         </column>
+         <column name="REV" type="INT(10)">
+             <constraints nullable="false"/>
+         </column>
+         <column name="REVTYPE" type="TINYINT(3)"/>
+         <column name="USER_NAME" type="VARCHAR(255)"/>
+         <column name="PASSWORD" type="VARCHAR(255)"/>
+     </createTable>
+  </changeSet>
+   
+  <changeSet author="nhassan" id="audit_3">
+     <createTable tableName="ACCOUNTS_AUD">
+         <column name="IDENTIFIER" type="BIGINT(20)">
+             <constraints nullable="false"/>
+         </column>
+         <column name="REV" type="INT(10)">
+             <constraints nullable="false"/>
+         </column>
+         <column name="REVTYPE" type="TINYINT(3)"/>
+         <column name="NAME" type="VARCHAR(64)"/>
+         <column name="COUNTRY" type="VARCHAR(32)"/>
+     </createTable>
+  </changeSet>
+  
+  <changeSet author="nhassan" id="audit_4">
+     <createTable tableName="CONTACTS_AUD">
+         <column name="IDENTIFIER" type="BIGINT(20)">
+             <constraints nullable="false"/>
+         </column>
+         <column name="REV" type="INT(10)">
+             <constraints nullable="false"/>
+         </column>
+         <column name="REVTYPE" type="TINYINT(3)"/>
+         <column name="FIRST_NAME" type="VARCHAR(64)"/>
+         <column name="LAST_NAME" type="VARCHAR(64)"/>
+         <column name="ACCOUNT_ID" type="BIGINT(20)"/>
+     </createTable>
+  </changeSet>
+  
+</databaseChangeLog>
