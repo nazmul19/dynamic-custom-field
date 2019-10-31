@@ -1,6 +1,6 @@
 package com.demo.core.service;
 
-import com.demo.core.AccountDetail;
+import com.demo.core.events.AccountDetail;
 
 public interface AccountService {
 	public AccountDetail createAccount(AccountDetail account);

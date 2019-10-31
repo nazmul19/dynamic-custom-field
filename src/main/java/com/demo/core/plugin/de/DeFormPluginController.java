@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.demo.core.de.events.RemoveFormContextOp;
-import com.demo.core.de.events.RemoveFormContextOp.RemoveType;
+import com.demo.core.plugin.de.events.FormContextDetail;
+import com.demo.core.plugin.de.events.RemoveFormContextOp;
+import com.demo.core.plugin.de.events.RemoveFormContextOp.RemoveType;
+import com.demo.core.plugin.de.services.FormPluginService;
 
 import edu.common.dynamicextensions.domain.nui.Container;
 import edu.common.dynamicextensions.nutility.ContainerJsonSerializer;

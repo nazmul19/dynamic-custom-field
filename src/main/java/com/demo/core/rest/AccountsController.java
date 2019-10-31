@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.demo.core.AccountDetail;
 import com.demo.core.domain.Account;
-import com.demo.core.plugin.de.FormPluginService;
+import com.demo.core.events.AccountDetail;
+import com.demo.core.plugin.de.services.FormPluginService;
 import com.demo.core.service.AccountService;
 
 @RestController

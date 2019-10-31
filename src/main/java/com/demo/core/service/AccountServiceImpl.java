@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.demo.core.AccountDetail;
-import com.demo.core.de.domain.DeObject;
 import com.demo.core.domain.Account;
+import com.demo.core.events.AccountDetail;
+import com.demo.core.plugin.de.domain.DeObject;
 import com.demo.core.repository.AccountRepository;
 
 @Service
