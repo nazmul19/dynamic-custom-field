@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "4ed454a8-adf9-420a-bf8a-a167a6ccda12",
+		"name": "CustomFieldCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DE-Form Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"new\",\n    \"save\": \"yes\",\n    \"id\": null,\n    \"skipRules\": {},\n    \"controlsOrder\": [],\n    \"controlRows\": {},\n    \"controlCollection\": [],\n    \"formName\": \"myForm1\",\n    \"caption\": \"MyForm1\",\n    \"formulae\": {}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8686/de-forms/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8686",
+					"path": [
+						"de-forms",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Context",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\"formId\":1,\"collectionProtocol\":{\"id\":-1},\"level\":\"AccountExtension\",\"multiRecord\":false}]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8686/app-forms/1/contexts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8686",
+					"path": [
+						"app-forms",
+						"1",
+						"contexts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "extension-form",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8686/accounts/extension-form",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8686",
+					"path": [
+						"accounts",
+						"extension-form"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Form-definition",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8686/app-forms/1/definition",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8686",
+					"path": [
+						"app-forms",
+						"1",
+						"definition"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Controls",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"saved\",\n  \"save\": \"yes\",\n  \"id\": 1,\n  \"skipRules\": {},\n  \"controlsOrder\": [\n    \"ST2\",\n    \"DD3\"\n  ],\n  \"controlRows\": {},\n  \"controlCollection\": [\n    {\n      \"type\": \"stringTextField\",\n      \"isSubFormControl\": false,\n      \"pvs\": {},\n      \"sequenceNumber\": 1,\n      \"controlName\": \"ST2\",\n      \"status\": \"new\",\n      \"xPos\": 1,\n      \"id\": 1,\n      \"width\": \"8\",\n      \"noOfRows\": 3,\n      \"noOfDigits\": 6,\n      \"lazyLoad\": true,\n      \"isCalculatedSourceControl\": false,\n      \"caption\": \"MyField1\",\n      \"defaultValue\": \"\",\n      \"userDefinedName\": \"myField1\",\n      \"isPHI\": false,\n      \"showInGrid\": false,\n      \"isHTMLLabel\": false,\n      \"isMandatory\": false,\n      \"isAutoCalculate\": false,\n      \"isChecked\": false,\n      \"toolTip\": \"\",\n      \"formTreeNodeId\": 12,\n      \"editName\": \"ST2\"\n    },\n    {\n      \"type\": \"comboBox\",\n      \"isSubFormControl\": false,\n      \"pvs\": {\n        \"pv_0\": {\n          \"value\": \"INDIA\",\n          \"numericCode\": \"\",\n          \"definition\": \"\",\n          \"definitionSource\": \"\",\n          \"conceptCode\": \"\",\n          \"status\": \"add\"\n        },\n        \"pv_1\": {\n          \"value\": \"USA\",\n          \"numericCode\": \"&nbsp;\",\n          \"definition\": \"\",\n          \"definitionSource\": \"\",\n          \"conceptCode\": \"\",\n          \"status\": \"add\"\n        }\n      },\n      \"sequenceNumber\": 2,\n      \"controlName\": \"DD3\",\n      \"status\": \"new\",\n      \"xPos\": 1,\n      \"id\": null,\n      \"noOfRows\": 3,\n      \"noOfDigits\": 6,\n      \"lazyLoad\": true,\n      \"isCalculatedSourceControl\": false,\n      \"caption\": \"MyField2\",\n      \"userDefinedName\": \"myField2\",\n      \"dataType\": \"STRING\",\n      \"isPHI\": false,\n      \"showInGrid\": false,\n      \"isHTMLLabel\": false,\n      \"isMandatory\": false,\n      \"isAutoCalculate\": false,\n      \"isChecked\": false,\n      \"pvOrder\": \"NONE\",\n      \"toolTip\": \"\",\n      \"formTreeNodeId\": 13,\n      \"editName\": \"DD3\"\n    }\n  ],\n  \"formName\": \"myForm1\",\n  \"caption\": \"MyForm1\",\n  \"formulae\": {},\n  \"createdBy\": \"MyUsername\",\n  \"lastModifiedBy\": \"MyUsername\",\n  \"createdOn\": \"10-29-2019\",\n  \"lastModifiedOn\": \"10-29-2019\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8686/de-forms/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8686",
+					"path": [
+						"de-forms",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Form Edit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8686/de-forms/1/true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8686",
+					"path": [
+						"de-forms",
+						"1",
+						"true"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"MyAccount8\",\n\t\"country\": \"USA\",\n\t\"extensionDetail\": {\n\t\t\"attrs\": [\n\t\t\t{\"name\":\"ST2\",\"value\":\"Hello\"},\n\t\t\t{\"name\":\"DD3\",\"value\":\"INDIA\"}\n\t\t]\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8686/accounts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8686",
+					"path": [
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8686/accounts/15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8686",
+					"path": [
+						"accounts",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Account",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 15,\r\n    \"name\": \"MyAccount8.1\",\r\n    \"country\": \"INDIA\",\r\n    \"extensionDetail\": {\r\n        \"id\": 27,\r\n        \"objectId\": 15,\r\n        \"formId\": 1,\r\n        \"formCaption\": \"MyForm1\",\r\n        \"attrs\": [\r\n            {\r\n                \"name\": \"ST2\",\r\n                \"udn\": \"myField1\",\r\n                \"caption\": \"MyField1\",\r\n                \"value\": \"Hello\",\r\n                \"type\": \"stringTextField\",\r\n                \"displayValue\": \"Hello\"\r\n            },\r\n            {\r\n                \"name\": \"DD3\",\r\n                \"udn\": \"myField2\",\r\n                \"caption\": \"MyField2\",\r\n                \"value\": \"USA\",\r\n                \"type\": \"combobox\",\r\n                \"displayValue\": \"INDIA\"\r\n            }\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8686/accounts/15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8686",
+					"path": [
+						"accounts",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Account",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8686/accounts/16",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8686",
+					"path": [
+						"accounts",
+						"16"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "08132f38-4eb3-40d1-8034-2dc6a689add7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "68ad54e2-42fe-4c7e-9118-620fd109d2ca",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
