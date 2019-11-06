@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,6 +18,7 @@ import edu.common.dynamicextensions.napi.FormDataManager;
 import edu.common.dynamicextensions.napi.impl.FormDataManagerImpl;
 import liquibase.integration.spring.SpringLiquibase;
 
+@Configuration
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.demo.core", "edu.wustl.dynamicextensions.formdesigner"})
 public class DemoApplication {
@@ -27,13 +30,13 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 	
-	@Bean
-	public SpringLiquibase liquibase() {
-	    SpringLiquibase liquibase = new SpringLiquibase();
-	    liquibase.setChangeLog("classpath:db/db.changelog-master.xml");
-	    liquibase.setDataSource(dataSource);
-	    return liquibase;
-	}
+//	@Bean
+//	public SpringLiquibase liquibase() {
+//	    SpringLiquibase liquibase = new SpringLiquibase();
+//	    liquibase.setChangeLog("classpath:db/db.changelog-master.xml");
+//	    liquibase.setDataSource(dataSource);
+//	    return liquibase;
+//	}
 	
 	@Bean
 	public FormDataManager formDataManager() {

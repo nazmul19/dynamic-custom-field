@@ -71,7 +71,7 @@ public class ContactServiceImpl implements ContactService{
 		contact.setFirstName(detail.getFirstName());
 		contact.setLastName(detail.getLastName());
 		Optional<Account> accountFetch = accountRepository.findById(detail.getAccountId());
-		if(accountFetch.isEmpty()) throw new RuntimeException("Contact Account Not Found in Database");
+		if(! accountFetch.isPresent()) throw new RuntimeException("Contact Account Not Found in Database");
 		contact.setAccount(accountFetch.get());
 		DeObject extension = DeObject.createExtension(detail.getExtensionDetail(), contact);
 		contact.setExtension(extension);
