@@ -190,7 +190,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"MyAccount8\",\n\t\"country\": \"USA\",\n\t\"extensionDetail\": {\n\t\t\"attrs\": [\n\t\t\t{\"name\":\"ST2\",\"value\":\"Hello\"},\n\t\t\t{\"name\":\"DD3\",\"value\":\"INDIA\"}\n\t\t]\n\t}\n}",
+					"raw": "{\n\t\"name\": \"MyAccountMM\",\n\t\"country\": \"USA\",\n\t\"extensionDetail\": {\n\t\t\"attrs\": [\n\t\t\t{\"name\":\"ST2\",\"value\":\"Hello\"},\n\t\t\t{\"name\":\"DD3\",\"value\":\"INDIA\"}\n\t\t]\n\t}\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -282,6 +282,76 @@
 					"path": [
 						"accounts",
 						"16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AQL-Query",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"cpId\": -1,\n  \"drivingForm\": \"Account\",\n  \"runType\": \"Data\",\n  \"aql\": \"select Account.id,Account.name,Account.customFields.myForm1.myField1, Contact.id where  Account.id exists   limit 0, 10000 \",\n  \"wideRowMode\": \"DEEP\",\n  \"outputIsoDateTime\": true,\n  \"outputColumnExprs\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8686/query",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8686",
+					"path": [
+						"query"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contact Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"Ali\",\n\t\"lastName\": \"Ranalvi\",\n\t\"accountId\": 22\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8686/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8686",
+					"path": [
+						"contacts"
 					]
 				}
 			},
