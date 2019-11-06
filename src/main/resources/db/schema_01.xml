@@ -118,5 +118,25 @@
            </column>
        </createTable>
    </changeSet>
+   
+   <changeSet author="nhassan" id="Import forms change log table">
+    <createTable tableName="IMPORT_FORMS_LOG">
+      <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+          <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="FILENAME" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="FORM_ID" type="BIGINT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="MD5_DIGEST" type="varchar(64)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="EXECUTED_ON" type="TIMESTAMP">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
      
 </databaseChangeLog>

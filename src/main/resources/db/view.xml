@@ -1,0 +1,37 @@
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd 
+   http://www.liquibase.org/xml/ns/dbchangelog 
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+   
+   <changeSet author="nhassan" id="Creating Account field extensions view" runOnChange="true">
+    <createView viewName="account_extension_view" replaceIfExists="true">
+      select 
+        re.object_id as ACCOUNT_ID, re.record_id as record_id, fc.container_id as form_id  
+      from 
+        form_record_entry re 
+        join app_form_context fc on fc.identifier = re.form_ctxt_id
+      where 
+        fc.entity_type = 'AccountExtension'
+        and fc.deleted_on is null 
+        and re.activity_status = 0
+    </createView>
+  </changeSet>
+  
+  <changeSet author="nhassan" id="Creating Contact field extensions view" runOnChange="true">
+    <createView viewName="contact_extension_view" replaceIfExists="true">
+      select 
+        re.object_id as CONTACT_ID, re.record_id as record_id, fc.container_id as form_id  
+      from 
+        form_record_entry re 
+        join app_form_context fc on fc.identifier = re.form_ctxt_id
+      where 
+        fc.entity_type = 'ContactExtension'
+        and fc.deleted_on is null 
+        and re.activity_status = 0
+    </createView>
+  </changeSet>
+</databaseChangeLog>

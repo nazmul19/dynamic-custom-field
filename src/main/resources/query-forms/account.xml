@@ -1,0 +1,53 @@
+<form>
+  <view>
+    <name>Account</name>
+    <caption>Account</caption>
+    <table>ACCOUNTS</table>
+    <row>
+      <numberField>
+        <name>id</name>
+        <udn>id</udn>
+        <caption>Identifier</caption>
+        <column>IDENTIFIER</column>
+        <recordUrl>#/accounts/{{$value}}/overview</recordUrl>
+      </numberField>
+    </row>
+    <row>
+      <textField>
+        <name>name</name>
+        <udn>name</udn>
+        <caption>Account Name</caption>
+        <column>NAME</column>
+        <recordUrl>#/object-state-params-resolver?stateName=account-detail.overview&amp;objectName=account&amp;key=name&amp;value={{$value}}</recordUrl>
+      </textField>
+    </row>
+    <row>
+      <textField>
+        <name>country</name>
+        <udn>country</udn>
+        <caption>Country</caption>
+        <column>COUNTRY</column>
+      </textField>
+    </row>
+    <row>
+      <textField>
+        <name>apiVersion</name>
+        <udn>apiVersion</udn>
+        <caption>API Version</caption>
+        <column>VERSION</column>
+      </textField>
+    </row>
+    <row>
+      <subForm>
+        <name>customFields</name>
+        <udn>customFields</udn>
+        <caption>Account Custom Field</caption>
+        <table>account_extension_view</table>
+        <foreignKey>ACCOUNT_ID</foreignKey>
+        <parentKey>IDENTIFIER</parentKey>
+        <pathLink>true</pathLink>
+        <extnFkCol>RECORD_ID</extnFkCol>
+      </subForm>
+    </row>
+  </view>
+</form>

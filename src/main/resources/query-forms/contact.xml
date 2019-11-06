@@ -1,0 +1,53 @@
+<form>
+  <view>
+    <name>Contact</name>
+    <caption>Contact</caption>
+    <table>CONTACTS</table>
+    <row>
+      <numberField>
+        <name>id</name>
+        <udn>id</udn>
+        <caption>Identifier</caption>
+        <column>IDENTIFIER</column>
+        <recordUrl>#/contacts/{{$value}}/overview</recordUrl>
+      </numberField>
+    </row>
+    <row>
+      <textField>
+        <name>FirstName</name>
+        <udn>FirstName</udn>
+        <caption>First Name</caption>
+        <column>FIRST_NAME</column>
+        <recordUrl>#/object-state-params-resolver?stateName=contact-detail.overview&amp;objectName=contact&amp;key=first_name&amp;value={{$value}}</recordUrl>
+      </textField>
+    </row>
+    <row>
+      <textField>
+        <name>LastName</name>
+        <udn>LastName</udn>
+        <caption>Last Name</caption>
+        <column>LAST_NAME</column>
+      </textField>
+    </row>
+    <row>
+      <textField>
+        <name>apiVersion</name>
+        <udn>apiVersion</udn>
+        <caption>API Version</caption>
+        <column>VERSION</column>
+      </textField>
+    </row>
+    <row>
+      <subForm>
+        <name>customFields</name>
+        <udn>customFields</udn>
+        <caption>Contact Custom Field</caption>
+        <table>contact_extension_view</table>
+        <foreignKey>CONTACT_ID</foreignKey>
+        <parentKey>IDENTIFIER</parentKey>
+        <pathLink>true</pathLink>
+        <extnFkCol>RECORD_ID</extnFkCol>
+      </subForm>
+    </row>
+  </view>
+</form>

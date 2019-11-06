@@ -9,4 +9,5 @@
    
   <include file="db/schema_01.xml"/> 
   <include file="db/audit.xml"/>
+  <include file="db/view.xml"/>
 </databaseChangeLog>

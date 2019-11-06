@@ -1,0 +1,12 @@
+<paths>
+	<path>
+		<from>Account</from>
+		<to>Contact</to>
+		<links>
+			<link>
+				<key>IDENTIFIER</key>
+				<ref-tab-key>ACCOUNT_ID</ref-tab-key>
+			</link>
+		</links>
+	</path>
+</paths>

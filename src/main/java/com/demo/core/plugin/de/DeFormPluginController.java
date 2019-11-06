@@ -19,9 +19,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.demo.core.plugin.de.domain.FormContextBean;
 import com.demo.core.plugin.de.events.FormContextDetail;
+import com.demo.core.plugin.de.events.FormSummary;
 import com.demo.core.plugin.de.events.RemoveFormContextOp;
 import com.demo.core.plugin.de.events.RemoveFormContextOp.RemoveType;
+import com.demo.core.plugin.de.repository.FormContextBeanRepository;
 import com.demo.core.plugin.de.services.FormPluginService;
 
 import edu.common.dynamicextensions.domain.nui.Container;
@@ -34,6 +37,16 @@ public class DeFormPluginController {
 	
 	@Autowired
 	private FormPluginService formSvc;
+	
+	@Autowired
+	private FormContextBeanRepository formContextBeanRepository;
+	
+	@RequestMapping(method = RequestMethod.GET, value="query-form")
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public List<FormContextBean> getAllQueryForms() {
+		return formContextBeanRepository.findByEntityType("Query");
+	}
 	
 	@RequestMapping(method = RequestMethod.GET, value="{id}/contexts")	
 	@ResponseStatus(HttpStatus.OK)

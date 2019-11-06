@@ -1,11 +1,13 @@
 package com.demo.core.init;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,11 +18,12 @@ import com.demo.core.plugin.de.UserContextImpl;
 import edu.common.dynamicextensions.napi.FormDataFilter;
 import edu.common.dynamicextensions.napi.FormDataManager;
 import edu.common.dynamicextensions.nutility.DeConfiguration;
+import edu.common.dynamicextensions.query.PathConfig;
 import edu.wustl.dynamicextensions.formdesigner.usercontext.CSDProperties;
 
 @Component
 public class DeInitializer implements InitializingBean {
-	private static final String QUERY_PATH_CFG = "/com/krishagni/catissueplus/core/de/query/paths.xml";
+	private static final String QUERY_PATH_CFG = "com/demo/core/plugin/de/query/paths.xml";
 	
 	@Autowired
 	private PlatformTransactionManager transactionManager;
@@ -103,13 +106,13 @@ public class DeInitializer implements InitializingBean {
 //		ControlManager.getInstance().registerFactory(PvControlFactory.getInstance());
 //		ControlMapper.getInstance().registerControlMapper("pvField", new PvFieldMapper());
 
-//		InputStream in = null;
-//		try {
-//			in = Utility.getResourceInputStream(QUERY_PATH_CFG);
-//			PathConfig.initialize(in);			
-//		} finally {
-//			IOUtils.closeQuietly(in);
-//		}
+		InputStream in = null;
+		try {
+			in = getResourceInputStream(QUERY_PATH_CFG);
+			PathConfig.initialize(in);			
+		} finally {
+			IOUtils.closeQuietly(in);
+		}
 		
 //		cfgSvc.registerChangeListener("common", new ConfigChangeListener() {			
 //			@Override
@@ -129,7 +132,11 @@ public class DeInitializer implements InitializingBean {
 		
 		System.out.println("*******************  DE Initialization Complete *******************");
 	}
-
+	
+	public static InputStream getResourceInputStream(String path) {
+		return Thread.currentThread().getContextClassLoader().getResourceAsStream(path);
+	}
+	
 	private void setFormFilters() {
 		for (Map.Entry<String, FormDataFilter> filterEntry : preFormSaveFilters.entrySet()) {
 			if (filterEntry.getKey().equals("all")) {
